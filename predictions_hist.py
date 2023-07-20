@@ -12,11 +12,12 @@ def main():
     os.makedirs("histograms", exist_ok=True)
     
     for word in similarity_dict.keys():
+        percents = [p for p in similarity_dict[word] if p >= 20]
         plt.figure()
-        plt.hist(similarity_dict[word], bins=50)
-        plt.xlabel("Rounded Probability Distribution")
-        plt.ylabel("Number of Occurences")
-        plt.title(f"Distribution for label: {word}")
+        plt.hist(percents, bins=50)
+        plt.xlabel("Percent Similarity")
+        plt.ylabel("Frequency")
+        plt.title(f"{word} is a match for {len(percents)} files")
         plt.savefig(f"histograms/{word}_hist.png")
     
 if __name__ == "__main__":
