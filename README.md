@@ -39,6 +39,7 @@ The CUDA Version on my machine is 12.0, but the GPU only connected when I set `c
     git clone https://github.com/ksjost/CLIP_label_counter
 
 ### Enter desired labels into word_labels.yaml
+    cd CLIP_label_counter
     vi word_labels.yaml
 
 ### Run program
