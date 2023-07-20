@@ -18,17 +18,17 @@ predictions_graph.py loads the counter from label_counter.pkl so that it can be 
     conda create -n try_clip
     conda activate try_clip
 
-### Clone OpenAI CLIP 
+### Install OpenAI CLIP Packages
 
-This code is adapted from OpenAI's CLIP repository. Visit https://github.com/openai/CLIP to clone the repository. Follow the installation instructions under "Usage" before continuing. I will also include the instructions here:
+This code is adapted from OpenAI's CLIP repository. Visit https://github.com/openai/CLIP to clone the repository or follow the installation instructions under "Usage" before continuing. These instructions are also included here:
 
     cd 
     conda install --yes -c pytorch pytorch=1.7.1 torchvision cudatoolkit=11.0
     pip install ftfy regex tqdm
     pip install git+https://github.com/openai/CLIP.git
+    # The previous line installs the repository as a python package as opposed to cloning it
 
 #### Notice:
-
 The CUDA Version on my machine is 12.0, but the GPU only connected when I set `cudatoolkit=11.0` while installing pytorch.
 
 ### More installation requirements
@@ -38,15 +38,11 @@ The CUDA Version on my machine is 12.0, but the GPU only connected when I set `c
 ### Clone CLIP_label_counter repository
     git clone https://github.com/ksjost/CLIP_label_counter
 
-### Put files in same directory
-    cd CLIP_label_counter
-    mv * ../CLIP
-    cd ../CLIP
-
 ### Enter desired labels into word_labels.yaml
     vi word_labels.yaml
 
 ### Run program
+    chmod +x label_counter.sh
     ./label_counter.sh <path to images>
 
 #### Troubleshooting: 
