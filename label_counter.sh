@@ -20,14 +20,18 @@ echo "Running label_counter.py..."
 python label_counter.py "$directory"
 
 # Run the python script to plot predictions
-echo "Running predictions_graph.py..."
-python predictions_graph.py
+echo "Running predictions_bar_graph.py..."
+python predictions_bar_graph.py
 
-# Check if the python script successfully generated the plot file 
+# Run the python script to plot the distribution of label probabilities
+echo "Running predictions_hist.py..."
+python predictions_hist.py
+
+# Check if the python script successfully generated the bar graph file 
 if [ ! -f "predictions_graph.png" ]; then 
-    echo "Error: The python script did not generate the plot file."
+    echo "Error: The python script did not generate the bar graph file."
     exit 1
 fi 
 
-echo "Plot file 'predictions_graph.png' created and saved in the current directory."
+echo "Plot files 'predictions_bar_graph.png' created and saved in the current directory."
 echo "Done!"
