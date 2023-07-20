@@ -26,6 +26,10 @@ def main():
     model, preprocess = clip.load("ViT-B/32", device)
 
     label_counter = Counter()
+    similarity_dict = {}
+
+    for word in labels_list:
+        similarity_dict[word] = []
 
     for image in images_list:
         image_input = preprocess(Image.open(images_dir+image)).unsqueeze(0).to(device)
@@ -47,11 +51,16 @@ def main():
 
         for value, index in listed_zip: 
             label_counter.update({labels_list[index]:round(100 * value, 2)})
+            similarity_dict[labels_list[index]].append(100 * value)
 
     # Save the label_counter dictionary to a pickle file
     with open("label_counter.pkl", "wb") as file: 
         pickle.dump(label_counter, file)
-        print("Data successfully pickled and saved")
+        print("Label counter pickled and saved")
+
+    with open("similarity_dict.pkl", "wb") as file:
+        pickle.dump(similarity_dict, file)
+        print("Similarity scores successfully pickled and saved") 
 
 if __name__ == "__main__":
     main()
