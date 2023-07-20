@@ -1,0 +1,10 @@
+# Labels for CLIP Predictions
+labels:
+  - boat
+  - cloud
+  - dock
+  - dog
+  - house
+  - land
+  - ocean
+  - road
