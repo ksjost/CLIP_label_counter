@@ -5,7 +5,7 @@ import os
 def main():
     """Main Program"""
 
-    # Load the pickled data fron similarity_dict.pkl
+    # Load the pickled data from similarity_dict.pkl
     with open("similarity_dict.pkl", "rb") as file:
         similarity_dict = pickle.load(file)
 
