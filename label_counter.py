@@ -23,6 +23,9 @@ def main():
     labels_list = yaml_doc["labels"]
     pickle_vectors = yaml_doc["pickle vectors"]
 
+    if pickle_vectors: 
+        os.makedirs("pickled_vectors", exist_ok=True)
+
     # Load the model
     device = "cuda" if torch.cuda.is_available() else "cpu"
     model, preprocess = clip.load("ViT-B/32", device)
@@ -57,7 +60,7 @@ def main():
 
             if (i + 1) % 100000 == 0:
                 # File name: "startIndex_endIndex.pkl"
-                with open(f"{a}_{i}.pkl", "wb") as file:
+                with open(f"pickled_vectors/{a}_{i}.pkl", "wb") as file:
                     pickle.dump(vector_list, file)
                 vector_list = []
                 a = i + 1
@@ -78,8 +81,6 @@ def main():
             label_counter.update({labels_list[index]:round(value, 4)})
             similarity_dict[labels_list[index]].append(round(value, 4))
     
-    os.makedirs("pickled_vectors", exist_ok=True)
-
     # Pickle remaining image_features (if applicable)
     if len(vector_list) != 0:
         if pickle_vectors: 
