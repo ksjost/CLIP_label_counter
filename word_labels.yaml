@@ -1,4 +1,6 @@
 # Labels for CLIP Predictions
+pickle vectors: True
+
 labels:
   - boat
   - cloud
@@ -9,5 +11,4 @@ labels:
   - ocean
   - road
 
-probability cutoff: 
-  - .2
+probability cutoff: 0.2
