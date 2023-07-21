@@ -78,10 +78,12 @@ def main():
             label_counter.update({labels_list[index]:round(value, 4)})
             similarity_dict[labels_list[index]].append(round(value, 4))
     
+    os.makedirs("pickled_vectors", exist_ok=True)
+
     # Pickle remaining image_features (if applicable)
     if len(vector_list) != 0:
         if pickle_vectors: 
-            with open(f"{a}_{i}.pkl", "wb") as file:
+            with open(f"pickled_vectors/{a}_{i}.pkl", "wb") as file:
                 pickle.dump(vector_list, file)
 
     # Save the label_counter dictionary to a pickle file
