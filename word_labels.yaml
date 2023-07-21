@@ -8,3 +8,6 @@ labels:
   - land
   - ocean
   - road
+
+probability cutoff: 
+  - .2
