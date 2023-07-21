@@ -16,10 +16,10 @@ def main():
 
     # Load the YAML data from the file 
     with open("word_labels.yaml", "r") as file: 
-        words = yaml.safe_load(file)
+        yaml_doc = yaml.safe_load(file)
     
     # Access the list of labels
-    labels_list = words["labels"]
+    labels_list = yaml_doc["labels"]
 
     # Load the model
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -50,8 +50,8 @@ def main():
         listed_zip = list(zip(values, indices))
 
         for value, index in listed_zip: 
-            label_counter.update({labels_list[index]:round(100 * value, 2)})
-            similarity_dict[labels_list[index]].append(round(100 * value, 2))
+            label_counter.update({labels_list[index]:round(value, 4)})
+            similarity_dict[labels_list[index]].append(round(value, 4))
 
     # Save the label_counter dictionary to a pickle file
     with open("label_counter.pkl", "wb") as file: 
