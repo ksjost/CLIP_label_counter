@@ -12,7 +12,7 @@ predictions_bar_graph.py loads the counter from label_counter.pkl so that it can
 
 predictions_hist.py loads the dictionary from similarity_dict.pkl so that it can be used to create and save multiple histograms. One histogram is made for each word in word_labels.yaml. The histogram plots the distribution of similarity percentages that are greater than or equal to 20%. The plot title contains the count of files represented by the plot. This program makes a directory called "histograms" where each plot is saved.
 
-probability_cutoff.py loads the dictionary from similarity_dict.pkl. It takes one argument **a float representing the probability at which to cut off or a integer/float representing the percent similarity at which to cutoff**. Then it prints each label in word_labels.yaml and the corresponding number of files that meet this requirement.
+probability_cutoff.py loads the dictionary from similarity_dict.pkl. It takes one argument **a float representing the probability at which to cut off or a integer/float representing the percent similarity at which to cutoff**. Then it prints each label in word_labels.yaml and the corresponding number of files that meet this **percent/probability** requirement.
 
 ## Instructions
 
