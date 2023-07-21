@@ -62,7 +62,5 @@ def main():
         pickle.dump(similarity_dict, file)
         print("Similarity scores successfully pickled and saved") 
 
-    print(similarity_dict)
-
 if __name__ == "__main__":
     main()
