@@ -51,16 +51,18 @@ def main():
 
         for value, index in listed_zip: 
             label_counter.update({labels_list[index]:round(100 * value, 2)})
-            similarity_dict[labels_list[index]].append(100 * value)
+            similarity_dict[labels_list[index]].append(round(100 * value, 2))
 
     # Save the label_counter dictionary to a pickle file
     with open("label_counter.pkl", "wb") as file: 
         pickle.dump(label_counter, file)
-        print("Label counter pickled and saved")
+        print("Label Counter pickled and saved")
 
     with open("similarity_dict.pkl", "wb") as file:
         pickle.dump(similarity_dict, file)
         print("Similarity scores successfully pickled and saved") 
+
+    print(similarity_dict)
 
 if __name__ == "__main__":
     main()
