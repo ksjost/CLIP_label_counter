@@ -2,7 +2,7 @@
 
 These files and scripts will allow you to use OpenAI's CLIP on your own set of images and labels.
 
-label_counter.sh takes a path to a directory of images as a command line argument. This directory is an argument for label_counter.py. 
+label_counter.sh takes a path to a directory of images as a command line argument. This directory is an argument for label_counter.py. label_counter.sh is responsible for running label_counter.py, predictions_bar_graph.py, and predictions_hist.py.
 
 label_counter.py uses clip to encode the labels in word_labels.yaml and the images in the directory you provide to compute the similarity percentage between each text-image pair. It then uses the labels in word_labels.yaml as keys for a Counter. The top 5 similarity percentages for each image are updated in the counter (so each word in the counter is followed by the sum of its corresponding percentage when it scored in the top 5 similarity labels for each image). This counter is then dumped and saved to a pickle file called label_counter.pkl. This program also creates a dictionary containing each word in word_labels.yaml as keys and a list of the corresponding similarity percentages as values. For example, the list that corresponds to the key "boat" contains all the similarity percentages when the label "boat" is one of the top 5 matches for an image. This dictionary is dumped and saved to a pickle file called similarity_dict.pkl.
 
@@ -11,6 +11,8 @@ I have a directory of approximately 154,000 images, and I put 8 labels into word
 predictions_bar_graph.py loads the counter from label_counter.pkl so that it can be used to create and save a bar graph. The horizontal bar chart created in this script shows the summed percentages corresponding to each label in word_labels.yaml.
 
 predictions_hist.py loads the dictionary from similarity_dict.pkl so that it can be used to create and save multiple histograms. One histogram is made for each word in word_labels.yaml. The histogram plots the distribution of similarity percentages that are greater than or equal to 20%. The plot title contains the count of files represented by the plot. This program makes a directory called "histograms" where each plot is saved.
+
+probability_cutoff.py loads the dictionary from similarity_dict.pkl. It takes one argument **a float representing the probability at which to cut off or a integer/float representing the percent similarity at which to cutoff**. Then it prints each label in word_labels.yaml and the corresponding number of files that meet this requirement.
 
 ## Instructions
 
@@ -45,6 +47,7 @@ The CUDA Version on my machine is 12.0, but the GPU only connected when I set `c
 ### Run program
     chmod +x label_counter.sh
     ./label_counter.sh <path to images>
+    python probability_cutoff.py <probability>
 
 #### Troubleshooting: 
 Eventually I began running into a RuntimeError that was saying "CUDA out of memory." I was told that this could be because there were times that I was killing the program before it finished running. To correct this issue: 
