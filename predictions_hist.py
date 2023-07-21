@@ -10,7 +10,8 @@ def main():
     with open("word_labels.yaml", "r") as file: 
         yaml_doc = yaml.safe_load(file)
 
-    probability = yaml_doc["probability cutoff"][0]
+    # Get probability cutoff
+    probability = yaml_doc["probability cutoff"]
 
     # Load the pickled data from similarity_dict.pkl
     with open("similarity_dict.pkl", "rb") as file:
@@ -19,7 +20,10 @@ def main():
     os.makedirs("histograms", exist_ok=True)
     
     for word in similarity_dict.keys():
+        # List of probabilities >= cutoff
         probs = [p for p in similarity_dict[word] if p >= probability]
+
+        # Draw plot
         plt.figure()
         plt.hist(similarity_dict[word], bins=50)
         plt.axvline(probability, color="r")
