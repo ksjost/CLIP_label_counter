@@ -35,7 +35,8 @@ The CUDA Version on my machine is 12.0, but the GPU only connected when I set `c
 ### Run program
     chmod +x label_counter.sh
     ./label_counter.sh <path to images>
-    python probability_cutoff.py <probability>
+    python pickle_loader.py <path to pickle folder>
+    python keyword_search.py
 
 #### Troubleshooting: 
 Eventually I began running into a RuntimeError that was saying "CUDA out of memory." I was told that this could be because there were times that I was killing the program before it finished running. To correct this issue: 
