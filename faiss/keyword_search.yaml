@@ -3,6 +3,8 @@ k nearest neighbors: 3
 
 path to images: "/home/kealia/Desktop/yoltv5_dataset/images/train/"
 
+path to index: "/home/kealia/Desktop/CLIP/faiss/faiss_index.index""
+
 words:
   - boat
   - road
