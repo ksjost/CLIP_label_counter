@@ -1,0 +1,9 @@
+# Keyword Search Words
+k nearest neighbors: 3
+
+path to images: "/home/kealia/Desktop/yoltv5_dataset/images/train/"
+
+words:
+  - boat
+  - road
+  - boat and road
